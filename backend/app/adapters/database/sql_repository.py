@@ -19,6 +19,8 @@ class SqlSensorRepository(SensorRepository):
             timestamp=event.timestamp,
             risk_score=event.risk_score,
             status=event.status,
+            optimal_temperature=event.optimal_temperature,
+            temperature_action=event.temperature_action,
         )
 
 
@@ -31,8 +33,10 @@ class SqlSensorRepository(SensorRepository):
             timestamp=row.timestamp,
             risk_score=row.risk_score,
             status=row.status,
+            optimal_temperature=row.optimal_temperature,
+            temperature_action=row.temperature_action,
         )
-    
+
     def save(self, event: EnrichedSensorEvent) -> None:
         db_event = SensorEventTable(
             machine_id=event.machine_id,
@@ -42,6 +46,8 @@ class SqlSensorRepository(SensorRepository):
             timestamp=event.timestamp,
             risk_score=event.risk_score,
             status=event.status,
+            optimal_temperature=event.optimal_temperature,
+            temperature_action=event.temperature_action,
         )
 
         self.db.add(db_event)

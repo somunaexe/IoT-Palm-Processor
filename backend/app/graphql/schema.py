@@ -13,6 +13,8 @@ class SensorEventType:
     timestamp: str
     risk_score: float
     status: str
+    optimal_temperature: float
+    temperature_action: str
 
 @strawberry.type
 class Query:
@@ -32,7 +34,9 @@ class Query:
                 pressure=e.pressure,
                 timestamp=str(e.timestamp),
                 risk_score=e.risk_score,
-                status=e.status
+                status=e.status,
+                optimal_temperature=e.optimal_temperature,
+                temperature_action=e.temperature_action
             )
             for e in events
         ]
