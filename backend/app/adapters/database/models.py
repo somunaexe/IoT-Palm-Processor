@@ -23,3 +23,7 @@ class SensorEventTable(Base):
     risk_score = Column(Float, nullable=False)
 
     status = Column(String(20), nullable=False)
+
+    optimal_temperature = Column(Float, nullable=False)
+
+    temperature_action = Column(String(20), nullable=False)

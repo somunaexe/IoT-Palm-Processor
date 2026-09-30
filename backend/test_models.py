@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from app.domain.models import SensorEvent
+from app.services.prediction_service import PredictionService
+from app.services.temperature_service import TemperatureAdvisorService
 
 event = SensorEvent(
     machine_id="M-101",
@@ -11,3 +13,9 @@ event = SensorEvent(
 )
 
 print(event)
+
+prediction = PredictionService().predict(event)
+print(prediction)
+
+temperature_recommendation = TemperatureAdvisorService().recommend(event)
+print(temperature_recommendation)
