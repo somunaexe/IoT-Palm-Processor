@@ -23,4 +23,6 @@ provider "azurerm" {
 
 module "azure" {
     source = "../azure"
+
+    backend_api_url = var.backend_api_url
 }
