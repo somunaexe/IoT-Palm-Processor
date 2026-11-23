@@ -23,3 +23,8 @@ variable "environment" {
   type        = string
   default     = "prod"
 }
+
+variable "backend_api_url" {
+  description = "Full URL the dashboard calls for sensor events, e.g. https://<backend-host>/events/latest"
+  type        = string
+}

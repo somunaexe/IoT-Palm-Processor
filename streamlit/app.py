@@ -1,3 +1,5 @@
+import os
+
 import streamlit as st
 import pandas as pd
 import requests
@@ -8,7 +10,10 @@ from streamlit_autorefresh import st_autorefresh
 st_autorefresh(interval=10000)  # refresh every 30 seconds
 st.set_page_config(page_title="Palm Pro Dashboard", layout="wide")
 
-API_URL = "http://backend:8000/events/latest"
+# "http://backend:8000/events/latest" only resolves inside docker compose
+# (Docker's internal DNS). Anywhere else - Azure, Railway, etc. - the real
+# backend URL has to come in via env var.
+API_URL = os.getenv("BACKEND_API_URL", "http://backend:8000/events/latest")
 
 # -----------------------
 # DATA LOADING

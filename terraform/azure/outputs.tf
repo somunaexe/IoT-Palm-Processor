@@ -17,3 +17,11 @@ output "sql_server" {
 output "eventhub_namespace" {
   value = azurerm_eventhub_namespace.ns.name
 }
+
+output "frontend_registry" {
+  value = azurerm_container_registry.frontend_acr.login_server
+}
+
+output "frontend_url" {
+  value = "https://${azurerm_container_app.frontend.latest_revision_fqdn}"
+}
